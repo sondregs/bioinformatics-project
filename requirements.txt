@@ -1,1 +1,2 @@
 Flask==1.1.1
+jpredapi==1.5.6
