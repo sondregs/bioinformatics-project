@@ -56,6 +56,10 @@ def submit():
     return "Sequence too long or JPRED API is down, try again later."
 
 
-
+@app.after_request
+def add_cors(response):
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Methods"] = "GET, OPTIONS"
+    return response
 
 

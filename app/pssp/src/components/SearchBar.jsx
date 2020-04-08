@@ -1,5 +1,5 @@
 import React from "react"
-import {InputGroup, FormControl,  Button} from 'react-bootstrap'
+import {InputGroup, FormControl,  Button, Container} from 'react-bootstrap'
 
 import "../styles/SearchBar.css"
 
@@ -7,25 +7,27 @@ class SearchBar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            hasTried: "not tried",
-            isLoaded: "false",
+            isLoaded: false,
             input: "",
             result: null,
-            url: "www"
+            primary_structure: "",
+            secondary_structure: "",
+            status: "cool"
         };
       }
 
     go = () => {
         // let url = "http://127.0.0.1:8080/api/submit?sequence=" + this.state.input
         let url = "http://127.0.0.1:8080/api/submit"
-        this.setState({url: url})
         fetch(url)
             .then(res => res.json())
             .then(
                 (result) => {
                 this.setState({
-                    isLoaded: "true, win",
-                    result: result
+                    isLoaded: true,
+                    result: result,
+                    primary_structure: result.primary_structure,
+                    secondary_structure: result.secondary_structure
                 });
                 },
                 // Note: it's important to handle errors here
@@ -65,11 +67,11 @@ class SearchBar extends React.Component {
                         </InputGroup.Append>
                     </InputGroup>
                 </div>
-                <h3>{this.state.input}</h3>
-                <h3>{this.state.isLoaded}</h3>
-                <h3>{this.state.hasTried}</h3>
-                <h3>{this.state.result}</h3>
-                <h3>{this.state.url}</h3>
+                <h4>Primary structure:</h4>
+                <h3>{this.state.primary_structure}</h3>
+
+                <h4>Secondary structure:</h4>
+                <h3>{this.state.secondary_structure}</h3>
             </div>
         )
     }
