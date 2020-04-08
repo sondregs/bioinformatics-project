@@ -12,13 +12,13 @@ class SearchBar extends React.Component {
             result: null,
             primary_structure: "",
             secondary_structure: "",
-            status: "cool"
-        };
-      }
+            validated: false
+        }
+    }
 
-    go = () => {
-        // let url = "http://127.0.0.1:8080/api/submit?sequence=" + this.state.input
-        let url = "http://127.0.0.1:8080/api/submit"
+    handleSubmit = () => {
+        let url = "http://127.0.0.1:8080/api/submit?sequence=" + this.state.input
+        // let url = "http://127.0.0.1:8080/api/submit"
         fetch(url)
             .then(res => res.json())
             .then(
@@ -44,11 +44,15 @@ class SearchBar extends React.Component {
     }
 
     handleChange = (e) => {
-        this.setState({input: e.target.value})
-    }
-
-    handleSearch = () => {
-        this.setState({input: ""})
+        let value = e.target.value
+        this.setState({input: value})
+        if (value.length >= 20) {
+            this.setState({
+                validated: true,
+            })
+        } else {
+            this.setState({validated: false})
+        }
     }
 
 
@@ -61,11 +65,20 @@ class SearchBar extends React.Component {
                     <InputGroup size="lg" onChange={this.handleChange}>
                         <FormControl  aria-describedby="inputGroup-sizing-sm" />
                         <InputGroup.Append>
-                            <Button variant="secondary" onClick={this.go}>
+                            <InputGroup.Text variant="outline-secondary" >
+                                {this.state.input.length}
+                            </InputGroup.Text>
+                        </InputGroup.Append>
+                        <InputGroup.Append>
+                            <Button variant="secondary" onClick={this.handleSubmit} disabled={!this.state.validated} >
                                 Search
                             </Button>
                         </InputGroup.Append>
                     </InputGroup>
+
+                    <p className="InfoText"> 
+                        The sequence must be 20 characters or longer
+                    </p>
                 </div>
                 <h4>Primary structure:</h4>
                 <h3>{this.state.primary_structure}</h3>
