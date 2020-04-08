@@ -48,11 +48,7 @@ def submit():
     if status == 200:
         primary, secondary = parse_html(simple_result.content.decode("utf-8"))
         secondary_list = structure_to_list(secondary)
-        ouff = jsonify(primary_structure=primary, secondary_structure=secondary, secondary_list=secondary_list)
-        print("HERE:")
-        print(ouff)
-        return ouff
-        #return jsonify(primary_structure=primary, secondary_structure=secondary, secondary_list=secondary_list)
+        return jsonify(primary_structure=primary, secondary_structure=secondary, secondary_list=secondary_list)
     return "Sequence too long or JPRED API is down, try again later."
 
 
