@@ -1,11 +1,13 @@
 # bioinformatics-project
 
-## Start project locally:
+### Start project locally:
 #### Start API:
 
 Install Python requirements:
 
-`pip install -r requirements.txt`
+```
+pip install -r requirements.txt
+```
 
 Run Flask API
 ```bash
@@ -14,6 +16,8 @@ export FLASK_ENV=development
 flask run --port 8080
 ```
 #### Start APP:
-    cd app/pssp
-    npm install
-    npm start
+```bash
+cd app/pssp
+npm install
+npm start
+```
