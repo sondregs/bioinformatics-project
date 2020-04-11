@@ -17,7 +17,7 @@ class SearchBar extends React.Component {
     }
 
     handleSubmit = () => {
-        let url = "http://127.0.0.1:8080/api/submit?sequence=" + this.state.input
+        let url = "http://bioinf.mwahl.no:8080/api/submit?sequence=" + this.state.input
         // let url = "http://127.0.0.1:8080/api/submit"
         fetch(url)
             .then(res => res.json())
