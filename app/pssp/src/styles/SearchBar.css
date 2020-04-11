@@ -1,0 +1,9 @@
+
+.SearchBar {
+    text-align: center;
+}
+
+.InputField {
+    width: 50%;
+    display: inline-block;
+}

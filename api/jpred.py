@@ -1,8 +1,8 @@
 import jpredapi
 
 
-def submit_jpred():
-    return jpredapi.submit(mode="single", user_format="raw", seq="MQVWPIEGIKKFETLSYLPPLTVEDLLKQIEYLLRSKWVPCLEFSKVGFVYRENHRSPGYYDGRYWTMWKLPMFGCTDATQVLKELEEAKKAYPDAFVRIIGFDNVRQVQLISFIAYKPPGC")# , seq="MQVWPIEGIKKFETLSYLPP")
+def submit_jpred(sequence):
+    return jpredapi.submit(mode="single", user_format="raw", seq=sequence)
 
 
 def results_jpred():
