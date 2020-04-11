@@ -4,9 +4,15 @@ from time import sleep
 import requests
 from flask import request, jsonify
 
-from api.app import app
-from api.jpred import submit_jpred
-from api.utils import generate, parse_html, structure_to_list
+# if using 'python app.py':
+from app import app
+from jpred import submit_jpred
+from utils import generate, parse_html, structure_to_list
+
+# if using 'flask run':
+# from api.app import app
+# from api.jpred import submit_jpred
+# from api.utils import generate, parse_html, structure_to_list
 
 
 @app.route('/', methods=['GET'])

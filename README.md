@@ -1,20 +1,34 @@
 # bioinformatics-project
 
 ### Start project locally:
-#### Start API:
 
-Install Python requirements:
-
+#### Setup API:
+Navigate, create virual environment, install requirements:
 ```
+cd api
+virtualenv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Run Flask API
+#### Run Flask API:
+Change dir to api:
 ```bash
-export FLASK_APP=api/app.py
-export FLASK_ENV=development
-flask run --port 8080
+cd api
 ```
+
+Make sure virtualenv is activated:
+```bash
+source venv/bin/activate
+```
+Then, start API by running
+```bash
+python app.py
+```
+
+API should now be running at `localhost:8080`
+
+
 #### Start APP:
 ```bash
 cd app/pssp

@@ -3,7 +3,13 @@ from itertools import groupby
 
 from bs4 import BeautifulSoup
 
-from api.jpred import submit_jpred
+
+# if using 'python app.py':
+from jpred import submit_jpred
+
+
+# if using 'flask run':
+# from api.jpred import submit_jpred
 
 
 def generate(sequence):
