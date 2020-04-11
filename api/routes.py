@@ -20,7 +20,7 @@ def index():
     return "Bioinformatics project api."
 
 
-@app.route('/api/test', methods=['GET'])
+@app.route('/test', methods=['GET'])
 def test():
     result = submit_jpred("MQVWPIEGIKKFETLSYLPP")
     print(f"STATUS CODE: {result.status_code}")
@@ -35,7 +35,7 @@ def test():
     #return response.content
 
 
-@app.route('/api/submit')
+@app.route('/submit')
 def submit():
     sequence = request.args.get("sequence", "MQVWPIEGIKKFETLSYLPP")
     simple_url = generate(sequence)
