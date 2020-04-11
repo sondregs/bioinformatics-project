@@ -1,0 +1,109 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="pviz-core.css">
+    <script src="pviz-bundle.min.js"></script>
+  </head>
+  <body>
+    <div id="main"></div>
+    <script>
+        var primary = 'ABCDEFGIJKLMNOPQRSTUVWXYZ'
+        var secondary = [
+                        {category : 'foo', type : 'bar', start : 5, end : 12, text : 'hello'},
+                        {category : 'foo', type : 'bar', start : 9, end : 15, text : 'world'},
+                        ]
+        const queryString = window.location.search;
+        console.log(queryString);
+        const urlParams = new URLSearchParams(queryString);
+        primary = urlParams.get('primary')
+        secondary = urlParams.get('secondary')
+        console.log(primary)
+        console.log(secondary);
+        var test = [
+      {
+      "category": "secondary structure", 
+      "end": 15, 
+      "start": 2, 
+      "type": "helix"
+    }, 
+    {
+      "category": "secondary structure", 
+      "end": 16, 
+      "start": 15, 
+      "type": "beta_strand"
+    }, 
+    {
+      "category": "secondary structure", 
+      "end": 26, 
+      "start": 24, 
+      "type": "beta_strand"
+    }, 
+    {
+      "category": "secondary structure", 
+      "end": 50, 
+      "start": 42, 
+      "type": "helix"
+    }, 
+    {
+      "category": "secondary structure", 
+      "end": 64, 
+      "start": 53, 
+      "type": "beta_strand"
+    }, 
+    {
+      "category": "secondary structure", 
+      "end": 88, 
+      "start": 76, 
+      "type": "beta_strand"
+    }, 
+    {
+      "category": "secondary structure", 
+      "end": 105, 
+      "start": 99, 
+      "type": "beta_strand"
+    }, 
+    {
+      "category": "secondary structure", 
+      "end": 118, 
+      "start": 111, 
+      "type": "beta_strand"
+    }, 
+    {
+      "category": "secondary structure", 
+      "end": 141, 
+      "start": 137, 
+      "type": "beta_strand"
+    }, 
+    {
+      "category": "secondary structure", 
+      "end": 148, 
+      "start": 147, 
+      "type": "beta_strand"
+    }, 
+    {
+      "category": "secondary structure", 
+      "end": 157, 
+      "start": 152, 
+      "type": "beta_strand"
+    }
+        ];
+        //var encoded = encodeURIComponent(JSON.stringify(test));
+        //console.log(encoded);
+        //console.log(test)
+        //console.log("xD");
+        //var decoded = decodeURIComponent(encoded);
+        //console.log(decoded)
+        //console.log(JSON.parse(decoded))
+        console.log("V")
+        secondary = JSON.parse(decodeURIComponent(secondary))
+        console.log(secondary)
+        console.log("^")
+        var pviz = this.pviz;
+        var seqEntry = new pviz.SeqEntry({sequence : primary});
+      
+        new pviz.SeqEntryAnnotInteractiveView({
+            model : seqEntry,
+            el : '#main'
+            }).render();
+        
+        seqEntry.addFeatures(secondary);
+    </script>
+  </body>
