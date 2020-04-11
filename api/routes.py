@@ -14,13 +14,16 @@ from utils import generate, parse_html, structure_to_list
 # from api.jpred import submit_jpred
 # from api.utils import generate, parse_html, structure_to_list
 
+api_root = ""
+if app.config["TESTING"]:
+    api_root = "/api"
 
-@app.route('/', methods=['GET'])
+@app.route(api_root + '/', methods=['GET'])
 def index():
     return "Bioinformatics project api."
 
 
-@app.route('/test', methods=['GET'])
+@app.route(api_root + '/test', methods=['GET'])
 def test():
     result = submit_jpred("MQVWPIEGIKKFETLSYLPP")
     print(f"STATUS CODE: {result.status_code}")
@@ -35,7 +38,7 @@ def test():
     #return response.content
 
 
-@app.route('/submit')
+@app.route(api_root + '/submit')
 def submit():
     sequence = request.args.get("sequence", "MQVWPIEGIKKFETLSYLPP")
     simple_url = generate(sequence)

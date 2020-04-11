@@ -3,6 +3,7 @@ from flask import Flask
 app = Flask(__name__, static_folder="../app/pssp/build", static_url_path="/")
 
 app.config["DEBUG"] = True
+app.config["TESTING"] = True
 
 from routes import *
 
