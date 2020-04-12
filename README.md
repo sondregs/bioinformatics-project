@@ -35,3 +35,12 @@ cd app/pssp
 npm install
 npm start
 ```
+
+#### Start Pviz Page
+
+To start the service which visualized secondary structure:
+
+```bash
+cd app/pssp/src/pviz
+python3 -m http.server 3001
+```
