@@ -12,6 +12,7 @@ class SearchBar extends React.Component {
             result: null,
             primary_structure: "",
             secondary_structure: "",
+            secondary_list: null,
             validated: false
         }
     }
@@ -29,7 +30,8 @@ class SearchBar extends React.Component {
                     isLoaded: true,
                     result: result,
                     primary_structure: result.primary_structure,
-                    secondary_structure: result.secondary_structure
+                    secondary_structure: result.secondary_structure,
+                    secondary_list: result.secondary_list,
                 });
                 },
                 // Note: it's important to handle errors here
@@ -60,6 +62,14 @@ class SearchBar extends React.Component {
 
     // What does this component do?
     render () {
+        let pviz_link = "";
+        if (this.state.secondary_list){
+            let pviz_url = "/pviz/pviz.html" + "?primary=" + this.state.primary_structure + "&secondary=" + encodeURIComponent(JSON.stringify(this.state.secondary_list));
+            pviz_link = <a href={pviz_url}>Click for Secondary Structure Visualization</a>
+        }
+        else {
+            pviz_link = ""
+        }
         return (
             <div class="SearchBar">
                 <h2>INSERT SEQUENCE TO SEARCH:</h2>
@@ -87,6 +97,9 @@ class SearchBar extends React.Component {
 
                 <h4>Secondary structure:</h4>
                 <h3>{this.state.secondary_structure}</h3>
+
+                <h4>Secondary structure visualization:</h4>
+                <h3>{pviz_link}</h3>
             </div>
         )
     }
