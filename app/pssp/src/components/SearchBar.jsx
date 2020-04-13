@@ -62,10 +62,8 @@ class SearchBar extends React.Component {
 
     // What does this component do?
     render () {
-        let pviz_link = ""
+        let pviz_link = "";
         if (this.state.secondary_list){
-            
-            //let pviz_url="http://0.0.0.0:3001/pviz.html" + "?primary=MELAALCRWGLLLALLPPGAASTQVCTGTDMKLRLPASPETHLDMLRHLYQGCQVVQGNLELTYLPTNASLSFLQDIQEVQGYVLIAHNQVRQVPLQRLRIVRGTQLFEDNYALAVLDNGDPLNNTTPVTGASPGGLRELQLRSLTEILKGGVLIQRNPQLCYQDTILWKDIFHKNNQLA&secondary=%5B%7B%22category%22%3A%22secondary%20structure%22%2C%22end%22%3A15%2C%22start%22%3A2%2C%22type%22%3A%22helix%22%7D%2C%7B%22category%22%3A%22secondary%20structure%22%2C%22end%22%3A16%2C%22start%22%3A15%2C%22type%22%3A%22beta_strand%22%7D%2C%7B%22category%22%3A%22secondary%20structure%22%2C%22end%22%3A26%2C%22start%22%3A24%2C%22type%22%3A%22beta_strand%22%7D%2C%7B%22category%22%3A%22secondary%20structure%22%2C%22end%22%3A50%2C%22start%22%3A42%2C%22type%22%3A%22helix%22%7D%2C%7B%22category%22%3A%22secondary%20structure%22%2C%22end%22%3A64%2C%22start%22%3A53%2C%22type%22%3A%22beta_strand%22%7D%2C%7B%22category%22%3A%22secondary%20structure%22%2C%22end%22%3A88%2C%22start%22%3A76%2C%22type%22%3A%22beta_strand%22%7D%2C%7B%22category%22%3A%22secondary%20structure%22%2C%22end%22%3A105%2C%22start%22%3A99%2C%22type%22%3A%22beta_strand%22%7D%2C%7B%22category%22%3A%22secondary%20structure%22%2C%22end%22%3A118%2C%22start%22%3A111%2C%22type%22%3A%22beta_strand%22%7D%2C%7B%22category%22%3A%22secondary%20structure%22%2C%22end%22%3A141%2C%22start%22%3A137%2C%22type%22%3A%22beta_strand%22%7D%2C%7B%22category%22%3A%22secondary%20structure%22%2C%22end%22%3A148%2C%22start%22%3A147%2C%22type%22%3A%22beta_strand%22%7D%2C%7B%22category%22%3A%22secondary%20structure%22%2C%22end%22%3A157%2C%22start%22%3A152%2C%22type%22%3A%22beta_strand%22%7D%5D";
             let pviz_url = "/pviz/pviz.html" + "?primary=" + this.state.primary_structure + "&secondary=" + encodeURIComponent(JSON.stringify(this.state.secondary_list));
             pviz_link = <a href={pviz_url}>Click for Secondary Structure Visualization</a>
         }
