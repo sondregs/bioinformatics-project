@@ -7,3 +7,15 @@
     width: 50%;
     display: inline-block;
 }
+
+.info_block {
+    justify-self: end;
+    margin: 20% auto 0 auto;
+    bottom: 10px;
+    max-width: 50%;
+    display: block;
+    background-color: lightgrey;
+    padding: 25px;
+    border-radius: 25px;
+    border: 2px solid #545454;
+}

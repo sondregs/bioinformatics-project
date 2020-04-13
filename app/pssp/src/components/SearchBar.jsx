@@ -7,7 +7,8 @@ class SearchBar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            isLoaded: false,
+            hasLoaded: false,
+            isLoading: false,
             input: "",
             result: null,
             primary_structure: "",
@@ -18,16 +19,18 @@ class SearchBar extends React.Component {
     }
 
     handleSubmit = () => {
+        this.setState({ isLoading: true});
         // Prod:
         // let url = "/api/submit?sequence=" + this.state.input
         // Dev:
-        let url = "http://127.0.0.1:8080/api/submit?sequence=" + this.state.input
+        let url = "http://127.0.0.1:8080/api/submit?sequence=" + this.state.input;
         fetch(url)
             .then(res => res.json())
             .then(
                 (result) => {
                 this.setState({
-                    isLoaded: true,
+                    hasLoaded: true,
+                    isLoading: false,
                     result: result,
                     primary_structure: result.primary_structure,
                     secondary_structure: result.secondary_structure,
@@ -40,7 +43,7 @@ class SearchBar extends React.Component {
                 (error) => {
                     console.log(error);
                     this.setState({
-                        isLoaded: "true, fail",
+                        isGenerating: false,
                         error
                     });
                 }
@@ -71,7 +74,7 @@ class SearchBar extends React.Component {
             pviz_link = ""
         }
         return (
-            <div class="SearchBar">
+            <div className={SearchBar}>
                 <h2>INSERT SEQUENCE TO SEARCH:</h2>
                 <div className="InputField">
                     <InputGroup size="lg" onChange={this.handleChange}>
@@ -82,7 +85,7 @@ class SearchBar extends React.Component {
                             </InputGroup.Text>
                         </InputGroup.Append>
                         <InputGroup.Append>
-                            <Button variant="secondary" onClick={this.handleSubmit} disabled={!this.state.validated} >
+                            <Button variant="secondary" onClick={this.handleSubmit} disabled={!this.state.validated || this.state.isLoading} >
                                 Search
                             </Button>
                         </InputGroup.Append>
@@ -92,14 +95,27 @@ class SearchBar extends React.Component {
                         The sequence must be 20 characters or longer
                     </p>
                 </div>
-                <h4>Primary structure:</h4>
-                <h3>{this.state.primary_structure}</h3>
+                <div style={{display: (this.state.isLoading ? 'block' : 'none')}} >
+                    Loading ...
+                </div>
+                <div style={{display: (this.state.hasLoaded && !this.state.isLoading) ? 'inline' : 'none', width: '80%'}} >
+                    <h4>Primary structure:</h4>
+                    <h3>{this.state.primary_structure}</h3>
 
-                <h4>Secondary structure:</h4>
-                <h3>{this.state.secondary_structure}</h3>
+                    <h4>Secondary structure:</h4>
+                    <h3>{this.state.secondary_structure}</h3>
 
-                <h4>Secondary structure visualization:</h4>
-                <h3>{pviz_link}</h3>
+                    <h4>Secondary structure interactive visualization:</h4>
+                    <h3>{pviz_link}</h3>
+                </div>
+
+                <div className="info_block">
+                    <p>
+                    This site predicts the secondary structure of a given protein sequences. It utilizes the <a href="http://www.compbio.dundee.ac.uk/jpred/about.shtml">JPred4</a> online tool for the predictions.
+                    <br/>It takes the protein sequence in the format of a string as input, and the output is a predicted secondary structure consisting of helices (H), sheets (E) and random coil (-).
+                    </p>
+                </div>
+
             </div>
         )
     }
