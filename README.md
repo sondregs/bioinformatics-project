@@ -1,5 +1,6 @@
 # bioinformatics-project
 
+
 ### Requirements
 - Windows / Unix OS
 - [Python](https://www.python.org/downloads/)
@@ -42,3 +43,7 @@ cd app/pssp
 npm install
 npm start
 ```
+
+### Flowchart
+
+![flow](https://user-images.githubusercontent.com/33224882/79271622-643fee80-7ea0-11ea-9592-260285d981ee.png)
