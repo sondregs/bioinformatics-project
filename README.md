@@ -1,6 +1,7 @@
 # bioinformatics-project
 
 ### Requirements
+- Windows / Unix OS
 - [Python](https://www.python.org/downloads/)
 - [Node](https://nodejs.org/en/)
 - [virtualenv](https://virtualenv.pypa.io/en/latest/)
