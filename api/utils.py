@@ -1,15 +1,7 @@
 import re
 from itertools import groupby
-
 from bs4 import BeautifulSoup
-
-
-# if using 'python app.py':
 from jpred import submit_jpred
-
-
-# if using 'flask run':
-# from api.jpred import submit_jpred
 
 
 def generate(sequence):
@@ -18,7 +10,6 @@ def generate(sequence):
     link = result.headers['Location']
     jobid = re.search(r"(jp_.*)$", link).group(1)
     simple = f"http://www.compbio.dundee.ac.uk/jpred4/results/{jobid}/{jobid}.simple.html"
-    # return jsonify(job_id=jobid, simple_url=simple)
     return simple
 
 

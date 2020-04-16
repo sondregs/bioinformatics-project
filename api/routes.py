@@ -1,18 +1,11 @@
 import re
 from time import sleep
-
 import requests
 from flask import request, jsonify
-
-# if using 'python app.py':
 from app import app
 from jpred import submit_jpred
 from utils import generate, parse_html, structure_to_list
 
-# if using 'flask run':
-# from api.app import app
-# from api.jpred import submit_jpred
-# from api.utils import generate, parse_html, structure_to_list
 
 api_root = ""
 if app.config["TESTING"]:
@@ -32,10 +25,7 @@ def test():
     link = result.headers['Location']
     jobid = re.search(r"(jp_.*)$", link).group(1)
     simple = f"http://www.compbio.dundee.ac.uk/jpred4/results/{jobid}/{jobid}.simple.html"
-    #response = requests.get(simple)
-    #print(f"STATUS CODE: {response.status_code}")
     return f"link: {link} , jobid: {jobid} , simple = {simple} , content: {url}"
-    #return response.content
 
 
 @app.route(api_root + '/submit')
